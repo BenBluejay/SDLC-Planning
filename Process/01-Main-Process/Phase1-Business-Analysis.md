@@ -33,10 +33,11 @@
 | BA-05 | TO-BE 流程圖（概念） | 系統輔助後的新流程 | Mermaid / Excalidraw |
 | BA-06 | 機會地圖 | 問題 → 機會的映射 | Markdown 表格 |
 | BA-07 | MoSCoW 優先序矩陣 | Must / Should / Could / Won't 分類 | Markdown 表格 |
-| BA-08 | MVP 範圍定義 | 最小可行產品邊界 | Markdown |
-| BA-09 | **User Story 清單** | 主要需求規格格式 | Markdown |
-| BA-10 | 非功能性需求 | 效能、安全、可用性等 | Markdown 表格 |
-| BA-11 | 驗收測試計畫 | 如何驗證解決了問題 | Markdown |
+| BA-08 | **User Story Map** | 視覺化使用者旅程與優先序 | Miro / Mural / 實體便利貼照片 |
+| BA-09 | **User Story Survey 清單** | 輕量需求清單（不含 AC） | Markdown 表格 |
+| BA-10 | Release Plan | MVP / Release 2 / Release 3 邊界定義 | Markdown |
+| BA-11 | 非功能性需求 | 效能、安全、可用性等 | Markdown 表格 |
+| BA-12 | 驗收測試計畫 | 如何驗證解決了問題 | Markdown |
 
 ## 方法論：P/G/O/W 框架
 
@@ -154,52 +155,136 @@ P2 (預算盲點) → O3: 預算儀表板
   [預算模組]   O3 + O4
 ```
 
-#### 步驟 6: W (Way) — MVP 範圍定義與 User Stories
+#### 步驟 6: User Story Mapping 工作坊
+
+**目的**：將 Opportunities 組織成視覺化的使用者旅程，劃分 MVP 與後續 Release 邊界。
+
+**工作坊形式**（2-4 小時）：
+- **參與者**：產品負責人、領域專家、利害關係人、UX 設計師、少數開發代表
+- **工具**：便利貼 + 白板（或 Miro / Mural）
+- **產出**：User Story Map (BA-08) + User Story Survey (BA-09) + Release Plan (BA-10)
 
 | 子步驟 | 如何執行 | 產出 |
 |--------|----------|------|
-| 6.1 MoSCoW 分類 | 每個 On 分類為 Must / Should / Could / Won't | MoSCoW 矩陣 (BA-07) |
-| 6.2 確認 MVP 邊界 | 與利害關係人確認 Must 項目為 MVP 範圍 | MVP 範圍文件 (BA-08) |
-| 6.3 撰寫 User Stories | 每個 MVP 功能寫成 User Story | User Story 清單 (BA-09) |
-| 6.4 定義 Acceptance Criteria | 為每個 User Story 寫驗收條件 | User Story + AC 完整文件 |
-| 6.5 非功能性需求 | 定義效能、安全、可用性等需求 | NFR 文件 (BA-10) |
+| 6.1 識別 Activities | 從 TO-BE 流程圖萃取使用者的高層活動（黃色便利貼） | Activity 清單 |
+| 6.2 分解 User Tasks | 每個 Activity 下的具體任務（藍色便利貼） | User Task 清單 |
+| 6.3 撰寫 User Stories | 每個 Task 的實作故事（粉色便利貼，輕量版） | User Story 草稿 |
+| 6.4 橫向排列（User Journey） | 按使用者流程從左到右排列 Activities | Story Map 橫軸 |
+| 6.5 縱向排列（Priority） | 按優先序從上到下排列 Stories | Story Map 縱軸 |
+| 6.6 劃分 Release 切線 | 畫橫線定義 MVP / Release 2 / Release 3 邊界 | Release Plan (BA-10) |
+| 6.7 MoSCoW 分類 | 標記 Must / Should / Could / Won't | MoSCoW 矩陣 (BA-07) |
+| 6.8 產出 User Story Survey | 從 Story Map 匯出表格，補充欄位 | User Story Survey (BA-09) |
+| 6.9 非功能性需求 | 定義效能、安全、可用性等需求 | NFR 文件 (BA-11) |
 
-**MoSCoW 矩陣範例**：
+**User Story Map 視覺化範例**：
+
 ```
-| 分類 | 機會 | 理由 |
+Activity:      提出需求          審核申請          追蹤進度          查看報表
+(黃色便利貼)   │                │                │                │
+               │                │                │                │
+Task:          填寫申請表        主管審核          查詢狀態          預算使用情況
+(藍色便利貼)   提交              HR審核            接收通知          部門統計
+               修改草稿          預算檢查          查看歷史          趨勢分析
+               │                │                │                │
+Stories:       ┌────────┐       ┌────────┐       ┌────────┐       
+(粉色便利貼)   │US-01   │       │US-05   │       │US-10   │       
+P0 (MVP)       │線上表單 │       │主管審核 │       │查詢狀態 │       
+               │        │       │        │       │        │       
+══════════════[MVP 切線]═══════════════════════════════════════════
+               ├────────┤       ├────────┤       ├────────┤       ┌────────┐
+P1 (R2)        │US-02   │       │US-06   │       │US-11   │       │US-15   │
+               │驗證規則 │       │HR審核  │       │Email通知│       │預算儀表板│
+               │        │       │        │       │        │       │        │
+──────────────[Release 2 切線]─────────────────────────────────────
+               ├────────┤       ├────────┤       ├────────┤       ├────────┤
+P2 (R3)        │US-03   │       │US-07   │       │US-12   │       │US-16   │
+               │儲存草稿 │       │批次審核 │       │進度追蹤 │       │趨勢圖表 │
+               └────────┘       └────────┘       └────────┘       └────────┘
+```
+
+**User Story Survey 格式**（BA-09，輕量需求清單）：
+
+⚠️ **注意**：BA 階段的 User Story Survey **不包含 Acceptance Criteria**。完整的 AC 將在 Phase 2 (System Analysis) 階段，透過 DDD 分析後補充。
+
+| 欄位 | 說明 | 範例 |
 |------|------|------|
-| Must (P0) | O1 結構化表單 | 核心功能，沒有它系統無法運作 |
-| Must (P0) | O4 預算檢查 | 財務控管不可妥協 |
-| Should (P1) | O3 預算儀表板 | 有價值但 CLI 查詢可替代 |
-| Could (P2) | 趨勢圖表 | Phase 2 功能 |
-| Won't | 合規引擎 | 進階功能，延後到未來版本 |
+| **ID** | 唯一識別碼 | US-01 |
+| **Activity** | 所屬活動（Story Map 橫軸） | 提出需求 |
+| **Task** | 所屬任務 | 填寫申請表 |
+| **Name** | Story 名稱 | 線上結構化表單 |
+| **Actor** | 使用者角色 | 部門主管 |
+| **Purpose** | 商業目的 | 標準化申請，減少 Email 往返 |
+| **Priority** | 優先序（Story Map 縱軸） | P0 (MVP) |
+| **Epic** | 所屬 Epic | 人力需求審批系統 |
+
+**User Story Survey 表格範例（BA-09）**：
+
+```markdown
+| ID | Activity | Task | Name | Actor | Purpose | Priority | Epic |
+|----|----------|------|------|-------|---------|----------|------|
+| US-01 | 提出需求 | 填寫申請表 | 線上結構化表單 | 部門主管 | 標準化申請，減少 Email 往返 | P0 (MVP) | 人力需求審批 |
+| US-02 | 提出需求 | 填寫申請表 | 欄位即時驗證 | 部門主管 | 減少錯誤提交 | P1 (R2) | 人力需求審批 |
+| US-03 | 提出需求 | 提交 | 儲存草稿功能 | 部門主管 | 分次填寫 | P2 (R3) | 人力需求審批 |
+| US-05 | 審核申請 | 主管審核 | 主管審核介面 | 直屬主管 | 確認需求合理性 | P0 (MVP) | 人力需求審批 |
+| US-06 | 審核申請 | HR審核 | HR 審核介面 | HR人員 | 確認符合政策 | P1 (R2) | 人力需求審批 |
+| US-07 | 審核申請 | 主管審核 | 批次審核功能 | 直屬主管 | 提高效率 | P2 (R3) | 人力需求審批 |
+| US-10 | 追蹤進度 | 查詢狀態 | 查詢申請狀態 | 部門主管 | 即時了解進度 | P0 (MVP) | 人力需求審批 |
+| US-11 | 追蹤進度 | 接收通知 | Email 通知 | 部門主管 | 主動通知狀態變化 | P1 (R2) | 人力需求審批 |
+| US-12 | 追蹤進度 | 查看歷史 | 歷史申請記錄 | 部門主管 | 查看過往申請 | P2 (R3) | 人力需求審批 |
+| US-15 | 查看報表 | 預算使用情況 | 預算儀表板 | 財務人員 | 即時預算可見度 | P1 (R2) | 人力需求審批 |
+| US-16 | 查看報表 | 趨勢分析 | 趨勢圖表 | 管理層 | 長期規劃 | P2 (R3) | 人力需求審批 |
 ```
 
-**User Story 格式**（主要需求規格格式）：
-```
-US-NN: [標題]
-  As a [角色]
-  I want [系統行為]
-  So that [商業價值]
+**MoSCoW 矩陣範例（BA-07）**：
 
-  Acceptance Criteria:
-  - [可觀察、可測試的條件 1]
-  - [可觀察、可測試的條件 2]
+```markdown
+| 分類 | Story ID | Story Name | 理由 |
+|------|----------|------------|------|
+| **Must (P0)** | US-01 | 線上結構化表單 | 核心功能，沒有它系統無法運作 |
+| **Must (P0)** | US-05 | 主管審核介面 | 審批流程核心 |
+| **Must (P0)** | US-10 | 查詢申請狀態 | 使用者必須知道申請進度 |
+| **Should (P1)** | US-02 | 欄位即時驗證 | 有價值但可用手動檢查替代 |
+| **Should (P1)** | US-06 | HR 審核介面 | 重要但可先用 Email 替代 |
+| **Should (P1)** | US-11 | Email 通知 | 有價值但使用者可主動查詢 |
+| **Should (P1)** | US-15 | 預算儀表板 | 有價值但 CLI 查詢可替代 |
+| **Could (P2)** | US-03 | 儲存草稿功能 | 便利性功能 |
+| **Could (P2)** | US-07 | 批次審核功能 | 進階功能 |
+| **Could (P2)** | US-12 | 歷史申請記錄 | 查詢功能 |
+| **Could (P2)** | US-16 | 趨勢圖表 | 分析功能 |
+| **Won't** | - | 合規稽核引擎 | 複雜度高，延後到未來版本 |
+| **Won't** | - | 多幣別支援 | 目前僅國內使用 |
 ```
 
-**User Story 範例**：
-```
-US-01: 提交人力需求申請
-  As a 部門主管
-  I want 填寫結構化的線上表單提交申請
-  So that 申請資料標準化，加速審批流程
+**Release Plan 範例（BA-10）**：
 
-  Acceptance Criteria:
-  - 表單欄位：申請人、部門、職位、職級、人數、預估成本、理由
-  - 驗證：人數 1-10、成本 > 0、理由 >= 10 字元
-  - 提交時狀態 = SUBMITTED
-  - 預算不足時顯示錯誤訊息（剩餘 / 需要金額）
+```markdown
+### MVP (Release 1) — 基本申請與審核流程
+
+**目標**：End-to-End 最簡可用流程
+**範圍**：US-01, US-05, US-10
+**時程**：4 週 Sprint × 2 = 8 週
+
+### Release 2 — 增強體驗與控管
+
+**目標**：提升使用者體驗，加強 HR 與財務管控
+**範圍**：US-02, US-06, US-11, US-15
+**時程**：4 週 Sprint × 2 = 8 週
+
+### Release 3 — 進階功能
+
+**目標**：效率提升與分析能力
+**範圍**：US-03, US-07, US-12, US-16
+**時程**：4 週 Sprint × 2 = 8 週
 ```
+
+**完整 User Story 規格（含 Acceptance Criteria）的產出時機**：
+
+User Story Survey (BA-09) 產出後，**完整的 User Story 規格（含 Given/When/Then Acceptance Criteria）將在 Phase 2 (System Analysis) 階段補充**，具體時機為：
+- Event Storming 工作坊後，識別出 Domain Events
+- Bounded Context 劃分後，確認每個 Story 所屬的 Context
+- Aggregate 設計時，理解業務規則與約束條件
+
+詳見：[Phase 2: System Analysis](Phase2-System-Analysis.md) 步驟 7
 
 #### 步驟 7: 驗收測試計畫
 
@@ -226,13 +311,31 @@ AC-02: 預算不足
 
 ### A.3 設計原則與最佳實踐
 
-#### 原則 1: User Stories 為主要需求規格格式
+#### 原則 1: User Story Mapping 視覺化優先，Survey 為主要需求規格格式
 
-**為什麼**：
-- User Story 以使用者價值為中心，而非技術實作
-- Acceptance Criteria 提供明確的驗收標準
-- 格式簡潔，便於溝通與理解
-- 直接對應到開發任務與測試案例
+**為什麼使用 User Story Mapping**：
+- **視覺化使用者旅程** — 利害關係人更容易理解系統全貌
+- **優先序自然浮現** — 縱軸排列讓 MVP 與後續 Release 邊界清晰
+- **避免遺漏步驟** — 橫軸的使用者流程幫助完整性檢查
+- **便於討論與共識** — 便利貼可移動、可調整，工作坊互動性強
+
+**為什麼 BA 階段不寫 Acceptance Criteria**：
+- **BA 階段關注範圍與價值** — 確認「要做什麼」與「為什麼」
+- **SA 階段關注實作細節** — 透過 DDD 分析後才能寫出精確的 AC
+- **避免過早設計** — 在理解領域模型前寫 AC 容易出錯，需要返工
+- **保持輕量** — User Story Survey 讓利害關係人快速檢視與調整優先序
+
+**User Story Survey 用途**：
+- 範圍確認（與利害關係人達成共識）
+- 優先序排列（MoSCoW 分類）
+- Release 規劃（MVP / R2 / R3）
+- 追溯性（Story → Opportunity → Goal → Problem）
+
+**完整 User Story 規格（含 AC）在 Phase 2 補充**：
+- Phase 2 透過 Event Storming 識別 Domain Events
+- 透過 Bounded Context 劃分確認 Story 所屬的語義邊界
+- 透過 Aggregate 設計理解業務規則與約束條件
+- 此時補充 Given/When/Then AC 才精確且穩定
 
 **何時補充其他格式**：
 - 複雜業務規則 → 加入決策表 (Decision Table)
@@ -323,31 +426,52 @@ P3 流程不透明
   [通知模組] O5, O6
 ```
 
-#### B.1.3 User Story 範例
+#### B.1.3 User Story Map 範例
+
+**視覺化 Story Map**（BA-08）：
+
+```
+Activity:      提出需求          審核申請          追蹤進度          查看報表
+               │                │                │                │
+Task:          填寫申請表        主管審核          查詢狀態          預算儀表板
+               提交              HR審核            接收通知          部門統計
+               修改草稿          預算檢查          查看歷史          趨勢分析
+               │                │                │                │
+Stories:       ┌────────┐       ┌────────┐       ┌────────┐       
+P0 (MVP)       │US-01   │       │US-05   │       │US-10   │       
+               │線上表單 │       │主管審核 │       │查詢狀態 │       
+══════════════[MVP 切線]═══════════════════════════════════════════
+               ├────────┤       ├────────┤       ├────────┤       ┌────────┐
+P1 (R2)        │US-02   │       │US-06   │       │US-11   │       │US-15   │
+               │驗證規則 │       │HR審核  │       │Email通知│       │預算儀表板│
+──────────────[Release 2 切線]─────────────────────────────────────
+               ├────────┤       ├────────┤       ├────────┤       ├────────┤
+P2 (R3)        │US-03   │       │US-07   │       │US-12   │       │US-16   │
+               │儲存草稿 │       │批次審核 │       │進度追蹤 │       │趨勢圖表 │
+```
+
+**User Story Survey 表格**（BA-09）：
 
 ```markdown
-US-01: 提交人力需求申請
-  As a 部門主管
-  I want 填寫結構化的線上表單提交申請
-  So that 申請資料標準化，加速審批流程
+| ID | Activity | Task | Name | Actor | Purpose | Priority | Epic |
+|----|----------|------|------|-------|---------|----------|------|
+| US-01 | 提出需求 | 填寫申請表 | 線上結構化表單 | 部門主管 | 標準化申請資料，加速審批流程 | P0 (MVP) | 人力需求審批 |
+| US-02 | 提出需求 | 填寫申請表 | 欄位即時驗證 | 部門主管 | 減少錯誤提交 | P1 (R2) | 人力需求審批 |
+| US-03 | 提出需求 | 提交 | 儲存草稿功能 | 部門主管 | 分次填寫 | P2 (R3) | 人力需求審批 |
+| US-05 | 審核申請 | 主管審核 | 主管審核介面 | 直屬主管 | 確認人力需求合理性 | P0 (MVP) | 人力需求審批 |
+| US-06 | 審核申請 | HR審核 | HR 審核介面 | HR人員 | 確認符合政策 | P1 (R2) | 人力需求審批 |
+| US-07 | 審核申請 | 主管審核 | 批次審核功能 | 直屬主管 | 提高效率 | P2 (R3) | 人力需求審批 |
+| US-10 | 追蹤進度 | 查詢狀態 | 查詢申請狀態 | 部門主管 | 即時了解進度 | P0 (MVP) | 人力需求審批 |
+| US-11 | 追蹤進度 | 接收通知 | Email 通知 | 部門主管 | 主動通知狀態變化 | P1 (R2) | 人力需求審批 |
+| US-12 | 追蹤進度 | 查看歷史 | 歷史申請記錄 | 部門主管 | 查看過往申請 | P2 (R3) | 人力需求審批 |
+| US-15 | 查看報表 | 預算儀表板 | 預算使用情況 | 財務人員 | 即時預算可見度 | P1 (R2) | 人力需求審批 |
+| US-16 | 查看報表 | 趨勢分析 | 趨勢圖表 | 管理層 | 長期規劃 | P2 (R3) | 人力需求審批 |
+```
 
-  Acceptance Criteria:
-  - 表單包含：申請人、部門、職位、職級、人數、預估成本、理由
-  - 驗證規則：人數 1-10、成本 > 0、理由 >= 10 字元
-  - 提交後狀態設為 SUBMITTED
-  - 若預算不足顯示錯誤訊息，包含剩餘 / 需要金額
-
-US-02: 主管審核申請
-  As a 直屬主管
-  I want 審核下屬提交的申請並加註意見
-  So that 確認人力需求的合理性
-
-  Acceptance Criteria:
-  - 可選擇「同意」或「退回」
-  - 必須填寫審核意見（至少 10 字元）
-  - 同意後狀態變更為 MANAGER_REVIEWED
-  - 退回後狀態變更為 REJECTED
-  - 審核完成後申請人收到通知
+**說明**：
+- ⚠️ **BA 階段不包含 Acceptance Criteria**
+- 完整的 User Story 規格（含 As-a/I-want/So-that 格式與 Given/When/Then AC）將在 **Phase 2 (System Analysis)** 階段補充
+- 此階段關注：範圍確認、優先序排列、Release 規劃
 ```
 
 ### B.2 範例：資料分析平台 (Data Analytics Platform)
